@@ -1,7 +1,6 @@
 import sqlite3
 data1=[{'tables':'table1,table2,table3,table4,table5,table6,table7,table8,table9,table10'}]
 
-
 def query(sql):
     with sqlite3.connect('restaurant.db') as conn:
         cur = conn.cursor()
@@ -9,9 +8,11 @@ def query(sql):
     
 def save_tables(data):
     new_data=data[0]['tables'].split(",")
+    new_str=''
     for d in new_data:
-        query(f'INSERT or IGNORE INTO r_table (name) VALUES ("{d}")')
-
+        new_str+=f"('{d}'),"
+    query(f'INSERT or IGNORE INTO r_table (name) VALUES {new_str[:-1]}')
+        
 def load_tables():
     load=list(query('SELECT name FROM r_table'))
     data=''
@@ -20,5 +21,3 @@ def load_tables():
         data+=','
     new_dict={'tables':data[:-1]}
     return new_dict
-
-load_tables()
