@@ -1,11 +1,25 @@
-function getApi(){
-    let api=axios.get("/api/services");
-    return api
+let HOST='http://127.0.0.1:5000/api/services'
+
+function axiosTest() {
+    axios.get(HOST).then((r)=>(console.log(r.data)))
 }
 
-function getTables() {
-    api=getApi()
-    return api;
+//axiosTest()
+
+function CreateTable(){
+    const [tablesO, setTable]=React.useState(null)
+    React.useEffect(() => {
+        axios.get(HOST).then((response) => {
+          setTable(response.data.tables);
+        });
+      }, []);
+    return (
+        <div className='tables'>
+            {tablesO}
+        </div>
+    )
 }
 
-console.log(getTables())
+
+const tables = ReactDOM.createRoot(document.getElementById("main"));
+tables.render(<CreateTable/>)

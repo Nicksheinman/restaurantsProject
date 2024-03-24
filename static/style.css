@@ -1,0 +1,21 @@
+
+img{
+    width: 150px;
+    height: 150px;
+}
+
+
+.orderbutton {
+    position: absolute;
+    top: 46%;
+    left: 33%;
+}
+
+.table {
+    position: relative;
+    background-image:url('/static/table.png');
+    background-position: center;
+    background-size: cover;
+    width: 150px;
+    height: 150px;
+}

@@ -15,9 +15,8 @@ def save_tables(data):
         
 def load_tables():
     load=list(query('SELECT name FROM r_table'))
-    data=''
+    data=[]
     for d in load:
-        data+=d[0]
-        data+=','
+        data.append(d[0])
     new_dict={'tables':data[:-1]}
     return new_dict
