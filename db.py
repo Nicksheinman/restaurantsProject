@@ -1,4 +1,5 @@
 import sqlite3
+import json
 data1=[{'tables':'table1,table2,table3,table4,table5,table6,table7,table8,table9,table10'}]
 
 def query(sql):
@@ -18,5 +19,5 @@ def load_tables():
     data=[]
     for d in load:
         data.append(d[0])
-    new_dict={'tables':data[:-1]}
-    return new_dict
+    new_dict={'tables':data}
+    return (new_dict)

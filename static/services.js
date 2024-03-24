@@ -7,15 +7,15 @@ function axiosTest() {
 //axiosTest()
 
 function CreateTable(){
-    const [tablesO, setTable]=React.useState(null)
+    const [tables, setTable]=React.useState(null)
     React.useEffect(() => {
         axios.get(HOST).then((response) => {
           setTable(response.data.tables);
         });
-      }, []);
+      });
     return (
         <div className='tables'>
-            {tablesO}
+            {Array.from(tables)[0]}
         </div>
     )
 }
