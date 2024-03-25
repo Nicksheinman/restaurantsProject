@@ -7,7 +7,7 @@ function axiosTest() {
 //axiosTest()
 
 function CreateTable(){
-    const [tables, setTable]=React.useState(null)
+    const [tables, setTable]=React.useState([])
     React.useEffect(() => {
         axios.get(HOST).then((response) => {
           setTable(response.data.tables);
