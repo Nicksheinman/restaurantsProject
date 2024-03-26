@@ -7,19 +7,25 @@ function axiosTest() {
 //axiosTest()
 
 function CreateTable(){
-    const [tables, setTable]=React.useState(null)
+    const [tables, setTable]=React.useState([])
     React.useEffect(() => {
         axios.get(HOST).then((response) => {
-          setTable(response.data.tables);
+            setTable(Array(response.data.tables)[0]);
         });
-      });
+      }, []);
     return (
         <div className='tables'>
-            {Array.from(tables)[0]}
+            {tables.map((tabble, index)=>(
+                <form>
+                    <div className='table' id={tabble}>
+                        <button variant='outlined' className='orderbutton'>Order</button>
+                    </div>
+                </form>
+            ))}
         </div>
     )
 }
 
 
-const tables = ReactDOM.createRoot(document.getElementById("main"));
+const tables=ReactDOM.createRoot(document.getElementById("main"));
 tables.render(<CreateTable/>)
