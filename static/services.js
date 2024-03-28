@@ -16,11 +16,13 @@ function CreateTable(){
     return (
         <div className='tables'>
             {tables.map((tabble, index)=>(
-                <form>
                     <div className='table' id={tabble}>
-                        <button variant='outlined' className='orderbutton'>Order</button>
+                        <form method='POST' action='/api/services'>
+                            <button variant='outlined' className='orderbutton'>Order</button>
+                            <input type='date' name='date'></input>
+                            <input type='text' name='id' hidden value={index}></input>
+                        </form>
                     </div>
-                </form>
             ))}
         </div>
     )
