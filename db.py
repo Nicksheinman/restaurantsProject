@@ -18,6 +18,8 @@ def save_tables(data):
 def save_date(data):
         new_data=dict(data)
         date=new_data['date']
+        if date=='':
+            return 'exist'
         id=new_data['id']
         test_data=query(f"SELECT table_id, date FROM order_status WHERE date='{date}' AND table_id={id}")
         if test_data==[]:

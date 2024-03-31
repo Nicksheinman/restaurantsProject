@@ -1,11 +1,5 @@
 let HOST='http://127.0.0.1:5000/api/services'
 
-function axiosTest() {
-    axios.get(HOST).then((r)=>(console.log(r.data)))
-}
-
-//axiosTest()
-
 function CreateTable(){
     const [tables, setTable]=React.useState([])
     React.useEffect(() => {
@@ -19,7 +13,8 @@ function CreateTable(){
                     <div className='table' id={tabble}>
                         <form method='POST' action='/api/services'>
                             <button variant='outlined' className='orderbutton'>Order</button>
-                            <input type='date' name='date'></input>
+                            <div className='tName'>{tabble}</div>
+                            <input type='date' name='date' className='date'></input>
                             <input type='text' name='id' hidden value={index}></input>
                         </form>
                     </div>

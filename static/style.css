@@ -4,11 +4,21 @@ img{
     height: 150px;
 }
 
+.tName{
+    position: absolute;
+    left: 34%;
+    top: 20%;
+}
 
+.date{
+    position: absolute;
+    top:32%;
+    left: 10%;
+}
 .orderbutton {
     position: absolute;
     top: 46%;
-    left: 33%;
+    left: 31%;
 }
 
 .table {
@@ -18,4 +28,24 @@ img{
     background-size: cover;
     width: 150px;
     height: 150px;
+}
+
+.tables {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 150px;
+    margin-top: 150px;
+}
+
+.about{
+    background-color: wheat;
+    height: 50px;
+}
+
+
+.explain{
+    text-align: center;
+    background-color: wheat;
 }
