@@ -1,4 +1,5 @@
 from flask import Flask, request, send_file, redirect
+import requests
 from db import load_tables, save_tables, save_date
 import time
 import json
@@ -17,7 +18,7 @@ def services():
     return json.dumps(load_tables())
 
 
-@app.route('/api/services/', methods=['POST'])
+@app.route('/api/services', methods=['POST', 'GET'])
 def order_services():
     if request.method=='POST':
         anwser=save_date(request.form)
@@ -25,4 +26,5 @@ def order_services():
             return redirect("/")
         else:
             return redirect('/exist')
+
         

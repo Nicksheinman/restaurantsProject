@@ -1,8 +1,0 @@
-<div className='tables'>
-            {tables.map((e)=>(
-                <div className='table'>
-                    <button variant='outlined' className='orderbutton'>Order</button>
-                    
-                </div>
-            ))}
-        </div>
