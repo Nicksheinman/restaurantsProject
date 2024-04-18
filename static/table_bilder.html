@@ -5,21 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="tableBilder.js" defer></script>
+    <link rel="stylesheet" href="styleTable.css">
     <style>
-        .table {
-            position:fixed;
-            background-image:url('table.png');
-            background-size: cover;
-            width: 100px;
-            height: 100px;
-            top: 50%;
-            left: 50%;
-        }
+       
     </style>
 </head>
 <body>
     <div id="main" class="main">
-        <div class="table" id="table"><button onclick="setTable()">hello</button></div>
+        <div class="tables" id="tables">
+            <img src="table.png" id="table" class="table" onclick="setTable(this.id)">
+        </div>
         <div class="create_table"><button onclick="createTable(1)">hello</button></div>
     </div>
 </body>

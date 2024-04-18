@@ -1,6 +1,9 @@
-var table = document.querySelector('.table');
+//var table = document.querySelector('.table');
 var move=false
-function setTable(){
+var count=1
+function setTable(id){
+    let search='.'+id
+    var table = document.querySelector(search);
     if (move==false) {
         document.onmousemove = (event) => {
             var x = event.clientX*100/window.innerWidth+'%';
@@ -21,12 +24,14 @@ function setTable(){
 
 function createTable(num){
     if (num==1){
-        let t=document.createElement('div')
-        t.className='table1'
-        let  b=document.createElement('button')
-        b.innerText='hello'
-        b.addEventListener('click', setTable)
-        document.getElementById("main").appendChild(t)
-        document.getElementById("main").appendChild(b)
+        let t=document.createElement('img')
+        t.className='table'+count
+        let id=t.id='table'+count
+        t.setAttribute('src', 'table.png' )
+        t.addEventListener('click', function() {setTable(id)})
+        document.getElementById("tables").appendChild(t)
+        count=count+1
+    }
+    if (num==2){
     }
 }
