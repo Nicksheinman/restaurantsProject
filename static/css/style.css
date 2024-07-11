@@ -23,7 +23,7 @@ img{
 
 .table {
     position: relative;
-    background-image:url('/static/table.png');
+    background-image:url('/static/img/table.png');
     background-position: center;
     background-size: cover;
     width: 150px;
@@ -49,3 +49,22 @@ img{
     text-align: center;
     background-color: wheat;
 }
+
+.navbar {
+    justify-content: center;
+    background-color: wheat;
+    display: flex;
+
+}
+
+.navbar > * {
+    text-decoration: none;
+    color: black;
+    width: 100px;
+    height: 50px;
+}
+
+.navbar a:hover {
+    background-color: #454545;
+}
+

@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <script src="/static/js/tableBilder.js" defer></script>
+    <link rel="stylesheet" href="/static/css/styleTable.css">
+    <div id="main" class="main">
+        <div class="tables" id="tables">
+            <div class="ordinaryTables" id="ordinaryTables"></div>
+            <div class="bigTables" id="bigTables"></div>
+            <div class="hugeTables" id="hugeTables"></div>
+        </div>
+        <div class="create_table">
+            <button onclick="createTable(1)">ordinary table</button>
+            <button onclick="createTable(2)">big table</button>
+            <button onclick="createTable(3)">huge table</button>
+
+        </div>
+    </div>
+{% endblock %}     

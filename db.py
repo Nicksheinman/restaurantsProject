@@ -24,9 +24,9 @@ def save_date(data):
         test_data=query(f"SELECT table_id, date FROM order_status WHERE date='{date}' AND table_id={id}")
         if test_data==[]:
             query(f"INSERT INTO order_status (table_id,date) VALUES ({id}, '{date}')")
-            return 'ok'
+            return 'successfully saved'
         else:
-            return 'exist'
+            return 'sorry but the table is already ordered'
 
 def load_tables():
     load=list(query('SELECT name FROM r_table'))
