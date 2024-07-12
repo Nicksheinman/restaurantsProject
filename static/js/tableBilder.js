@@ -3,7 +3,7 @@ var countTable=1
 var countTableBig=1
 var countTableHuge=1
 function setTable(id){
-    var table = document.querySelector('.'+id);
+    var table = document.querySelector('#'+id);
     if (move==false) {
         document.onmousemove = (event) => {
             var x = event.clientX*100/window.innerWidth+'%';
@@ -26,7 +26,7 @@ function setTable(id){
 function createTable(num){
     if (num==1){
         let t=document.createElement('img')
-        t.className='table'+countTable
+        t.className='table'
         let id=t.id='table'+countTable
         t.setAttribute('src', '/static/img/table.png' )
         t.addEventListener('click', function() {setTable(id)})
@@ -36,7 +36,7 @@ function createTable(num){
     }
     if (num==2){
         let t=document.createElement('img')
-        t.className='tableBig'+countTableBig
+        t.className='tableBig'
         let id=t.id='tableBig'+countTableBig
         t.setAttribute('src', '/static/img/big_table.png' )
         t.addEventListener('click', function() {setTable(id)})
@@ -46,7 +46,7 @@ function createTable(num){
     }
     if (num==3){
         let t=document.createElement('img')
-        t.className='tableHuge'+countTableHuge
+        t.className='tableHuge'
         let id=t.id='tableHuge'+countTableHuge
         t.setAttribute('src', '/static/img/huge_table.png' )
         t.addEventListener('click', function() {setTable(id)})
@@ -58,4 +58,33 @@ function createTable(num){
 
 function deleteElement(id) {
     document.getElementById(id).remove()
+}
+
+function saveTables() {
+    let  oTable=document.querySelectorAll('.table')
+    let orTable=[]
+    oTable.forEach((table)=>{
+        let a=table.getAttribute('style')
+        let b=table.getAttribute('id')
+        let c={'id':b,'style':a}
+        orTable.push(c)
+    })
+    let  bTable=document.querySelectorAll('.table')
+    let biTable=[]
+    bTable.forEach((table)=>{
+        let a=table.getAttribute('style')
+        let b=table.getAttribute('id')
+        let c={'id':b,'style':a}
+        biTable.push(c)
+    })
+    let  hTable=document.querySelectorAll('.table')
+    let huTable=[]
+    hTable.forEach((table)=>{
+        let a=table.getAttribute('style')
+        let b=table.getAttribute('id')
+        let c={'id':b,'style':a}
+        huTable.push(c)
+    })
+    let allTables={'ordinaryTables':orTable, 'bigTables':biTable, 'hugeTables':huTable}
+    console.log(allTables)
 }
