@@ -60,31 +60,39 @@ function deleteElement(id) {
     document.getElementById(id).remove()
 }
 
+axios.defaults.headers.common = {
+    "Content-Type": "application/json"
+  }
+
 function saveTables() {
-    let  oTable=document.querySelectorAll('.table')
-    let orTable=[]
-    oTable.forEach((table)=>{
-        let a=table.getAttribute('style')
-        let b=table.getAttribute('id')
-        let c={'id':b,'style':a}
-        orTable.push(c)
-    })
-    let  bTable=document.querySelectorAll('.table')
-    let biTable=[]
-    bTable.forEach((table)=>{
-        let a=table.getAttribute('style')
-        let b=table.getAttribute('id')
-        let c={'id':b,'style':a}
-        biTable.push(c)
-    })
-    let  hTable=document.querySelectorAll('.table')
-    let huTable=[]
-    hTable.forEach((table)=>{
-        let a=table.getAttribute('style')
-        let b=table.getAttribute('id')
-        let c={'id':b,'style':a}
-        huTable.push(c)
-    })
-    let allTables={'ordinaryTables':orTable, 'bigTables':biTable, 'hugeTables':huTable}
-    console.log(allTables)
+    let rName=document.getElementById('rName').value
+    if (rName.length>0){
+        let  oTable=document.querySelectorAll('.table')
+        let orTable=[]
+        oTable.forEach((table)=>{
+            let a=table.getAttribute('style')
+            let b=table.getAttribute('id')
+            let c={'id':b,'style':a}
+            orTable.push(c)
+        })
+        let  bTable=document.querySelectorAll('.tableBig')
+        let biTable=[]
+        bTable.forEach((table)=>{
+            let a=table.getAttribute('style')
+            let b=table.getAttribute('id')
+            let c={'id':b,'style':a}
+            biTable.push(c)
+        })
+        let  hTable=document.querySelectorAll('.tableHuge')
+        let huTable=[]
+        hTable.forEach((table)=>{
+            let a=table.getAttribute('style')
+            let b=table.getAttribute('id')
+            let c={'id':b,'style':a}
+            huTable.push(c)
+        })
+        let allTables= {'restaraunt_name' :rName, 'tables':{'ordinaryTables':orTable, 'bigTables':biTable, 'hugeTables':huTable}}
+        let result=axios.post('http://127.0.0.1:5000/api/saveTable', allTables)
+        console.log(result.data)}
+    else {alert("Please enter name for your restaraunt")}
 }

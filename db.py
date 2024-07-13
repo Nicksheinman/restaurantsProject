@@ -35,3 +35,17 @@ def load_tables():
         data.append(d[0])
     new_dict={'tables':data}
     return(new_dict)
+
+def save_restaraunt(data):
+    r_name=data['restaraunt_name']
+    o_tables=data['tables']['ordinaryTables']
+    b_tables=data['tables']['bigTables']
+    h_tables=data['tables']['hugeTables']
+    create_table=query(f'''CREATE TABLE "{r_name}" (
+	"id"	INTEGER,
+	"t_name"	TEXT UNIQUE,
+	"t_style"	TEXT UNIQUE,
+	PRIMARY KEY("id")
+    )''')
+    print(o_tables)
+    

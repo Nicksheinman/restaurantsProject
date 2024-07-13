@@ -3,6 +3,7 @@
     <script src="/static/js/tableBilder.js" defer></script>
     <link rel="stylesheet" href="/static/css/styleTable.css">
     <div id="main" class="main">
+        <input type="text"  placeholder="restaraunt name" class="rName" id="rName">
         <div class="tables" id="tables">
             <div class="ordinaryTables" id="ordinaryTables"></div>
             <div class="bigTables" id="bigTables"></div>
@@ -13,7 +14,6 @@
             <button onclick="createTable(2)">Big table</button>
             <button onclick="createTable(3)">Huge table</button>
             <button onclick='saveTables()'>Save</button>
-
         </div>
     </div>
-{% endblock %}     
+{% endblock %}   

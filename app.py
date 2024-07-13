@@ -1,6 +1,6 @@
 from flask import Flask, request, send_file, redirect, render_template
 import requests
-from db import load_tables, save_tables, save_date
+from db import load_tables, save_tables, save_date, save_restaraunt
 import time
 import json
 app=Flask(__name__)
@@ -22,9 +22,10 @@ def services():
 def order_services():
     if request.method=='POST':
         anwser=save_date(request.form)
-        if anwser=='ok':
-            return home(message=anwser)
-        else:
-            return home(message=anwser)
+        return home(message=anwser)
 
-        
+@app.route('/api/saveTable', methods=['POST', 'GET'])
+def table_save():
+    if request.method=='POST':
+        save_restaraunt(request.json)
+        return table_bilder()
