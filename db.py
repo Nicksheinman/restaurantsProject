@@ -41,11 +41,39 @@ def save_restaraunt(data):
     o_tables=data['tables']['ordinaryTables']
     b_tables=data['tables']['bigTables']
     h_tables=data['tables']['hugeTables']
-    create_table=query(f'''CREATE TABLE "{r_name}" (
-	"id"	INTEGER,
-	"t_name"	TEXT UNIQUE,
-	"t_style"	TEXT UNIQUE,
-	PRIMARY KEY("id")
-    )''')
-    print(o_tables)
-    
+    try:
+        query(f'''CREATE TABLE "{r_name}" (
+        "id"	INTEGER,
+        "t_type"	TEXT,
+        "t_name"	TEXT,
+        "t_style"	TEXT,
+        PRIMARY KEY("id")
+        )''')
+        print(o_tables)
+    except:
+        for o_table in o_tables:
+            query(f"INSERT INTO {r_name} (t_type,t_name,t_style) VALUES ('o_table', '{o_table['id']}', '{o_table['style']}')")
+        for b_table in b_tables:
+            query(f"INSERT INTO {r_name} (t_type,t_name,t_style) VALUES ('b_table', '{b_table['id']}', '{b_table['style']}')")
+        for h_table in h_tables:
+            query(f"INSERT INTO {r_name} (t_type,t_name,t_style) VALUES ('o_table', '{h_table['id']}', '{h_table['style']}')")    
+
+def load_restaraunt(r_name):
+    o_tabless=query(f'SELECT * FROM {r_name} WHERE t_type="o_table"')
+    o_tables=[]
+    for table in o_tabless:
+        new_table={'id': table[2], 'style':table[3]}
+        o_tables.append(new_table)
+    b_tabless=query(f'SELECT * FROM {r_name} WHERE t_type="b_table"')
+    b_tables=[]
+    for table in b_tabless:
+        new_table={'id': table[2], 'style':table[3]}
+        b_tables.append(new_table)
+    h_tabless=query(f'SELECT * FROM {r_name} WHERE t_type="h_table"')
+    h_tables=[]
+    for table in h_tabless:
+        new_table={'id': table[2], 'style':table[3]}
+        h_tables.append(new_table)
+    all_tables={'ordinaryTables':o_tables, 'bigTables':b_tables, 'hugeTables':h_tables}
+    print(all_tables)
+        
