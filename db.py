@@ -1,5 +1,6 @@
 import sqlite3
 import json
+import os
 data1=[{'tables':'table1,table2,table3,table4,table5,table6,table7,table8,table9,table10'}]
 
 def query(sql):
@@ -36,6 +37,8 @@ def load_tables():
     new_dict={'tables':data}
     return(new_dict)
 
+
+img_folder="static/img/restaraunt_plan"
 def save_restaraunt(data):
     r_name=data['restaraunt_name']
     o_tables=data['tables']['ordinaryTables']
@@ -56,7 +59,12 @@ def save_restaraunt(data):
         for b_table in b_tables:
             query(f"INSERT INTO {r_name} (t_type,t_name,t_style) VALUES ('b_table', '{b_table['id']}', '{b_table['style']}')")
         for h_table in h_tables:
-            query(f"INSERT INTO {r_name} (t_type,t_name,t_style) VALUES ('o_table', '{h_table['id']}', '{h_table['style']}')")    
+            query(f"INSERT INTO {r_name} (t_type,t_name,t_style) VALUES ('o_table', '{h_table['id']}', '{h_table['style']}')")
+
+def save_image(image, r_name):
+    pass
+    
+        
 
 def load_restaraunt(r_name):
     o_tabless=query(f'SELECT * FROM {r_name} WHERE t_type="o_table"')
@@ -75,5 +83,5 @@ def load_restaraunt(r_name):
         new_table={'id': table[2], 'style':table[3]}
         h_tables.append(new_table)
     all_tables={'ordinaryTables':o_tables, 'bigTables':b_tables, 'hugeTables':h_tables}
-    print(all_tables)
+    return all_tables
         

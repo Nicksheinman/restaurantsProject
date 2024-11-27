@@ -3,6 +3,13 @@ body {
     padding: 0;
 }
 
+.dImage {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
 .ordinaryTables > * {
     position:absolute;
     width: 100px;

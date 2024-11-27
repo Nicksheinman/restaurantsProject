@@ -91,8 +91,38 @@ function saveTables() {
             let c={'id':b,'style':a}
             huTable.push(c)
         })
+        let picture=document.getElementById('downloadImage').files[0];
+        let formData= new FormData();
+        formData.append("picture",picture);
         let allTables= {'restaraunt_name' :rName, 'tables':{'ordinaryTables':orTable, 'bigTables':biTable, 'hugeTables':huTable}}
         let result=axios.post('http://127.0.0.1:5000/api/saveTable', allTables)
-        console.log(result.data)}
+        let resultI=axios.post('http://127.0.0.1:5000/api/saveTable', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        console.log(result.data)
+        console.log(resultI.data)
+    }
+        
     else {alert("Please enter name for your restaraunt")}
+}
+
+function loadTables() {
+    let rName=document.getElementById('rName').value
+    if (rName.length>0){
+        axios.get('http://127.0.0.1:5000/api/saveTable', {params:{'rName':rName}}).then((response) => {
+            console.log(response.data);
+        });
+        }
+    else {alert("Please enter name for restaraunt you want to load")}
+}
+
+function viewImage(input) {
+    let file=input.files[0]
+    let reader= new FileReader() ;
+    reader.readAsDataURL(file);
+    reader.onload=function(e){
+        document.getElementById('backgroundImage').src=e.target.result;
+    }
 }

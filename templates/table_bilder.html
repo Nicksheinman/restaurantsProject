@@ -2,6 +2,7 @@
 {% block content %}
     <script src="/static/js/tableBilder.js" defer></script>
     <link rel="stylesheet" href="/static/css/styleTable.css">
+    <img id="backgroundImage" class="dImage">
     <div id="main" class="main">
         <input type="text"  placeholder="restaraunt name" class="rName" id="rName">
         <div class="tables" id="tables">
@@ -10,10 +11,12 @@
             <div class="hugeTables" id="hugeTables"></div>
         </div>
         <div class="create_table">
+            <input type="file" id="downloadImage" accept="image/*" oninput="viewImage(this)">
             <button onclick="createTable(1)">Ordinary table</button>
             <button onclick="createTable(2)">Big table</button>
             <button onclick="createTable(3)">Huge table</button>
             <button onclick='saveTables()'>Save</button>
+            <button onclick='loadTables()'>Load</button>
         </div>
     </div>
-{% endblock %}   
+{% endblock %}

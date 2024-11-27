@@ -50,21 +50,4 @@ img{
     background-color: wheat;
 }
 
-.navbar {
-    justify-content: center;
-    background-color: wheat;
-    display: flex;
-
-}
-
-.navbar > * {
-    text-decoration: none;
-    color: black;
-    width: 100px;
-    height: 50px;
-}
-
-.navbar a:hover {
-    background-color: #454545;
-}
 
